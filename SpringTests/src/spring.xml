@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util.xsd">
+
+<bean id = "address1" class="com.bms.beans.Address">
+<property name="street" value="lakshmareddypalem"></property>
+<property name="city" value="Hyderabad"></property>
+<property name="state" value="Telangana"></property>
+<property name="country" value="India"></property>
+</bean>
+<bean id = "address2" class="com.bms.beans.Address">
+<property name="street" value="Thurkapally"></property>
+<property name="city" value="Yadadri Bhongiri"></property>
+<property name="state" value="Telangana"></property>
+<property name="country" value="India"></property>
+</bean>
+<bean id="obj" class="com.bms.beans.GreetingsImpl" autowire="byType">
+	<property  value="Thummala Eshwar Reddy" name="name"/>
+	<property name="id" value="44"/>
+	<property name="contacts">
+		<map>
+			<entry key="Shoto" value="7387823787"/>
+			<entry key="Goku" value="7283723827"/>
+		</map>
+	</property>
+</bean>
+</beans>
