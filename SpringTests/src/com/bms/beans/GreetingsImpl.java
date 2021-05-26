@@ -1,21 +1,19 @@
 package com.bms.beans;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Map;
+
+import com.bms.dbutil.DBUtil;
+
 //https://onlinegdb.com/NyZOBsTYl
 public class GreetingsImpl implements Greetings {
 
 	public int id;
 	public String name;
-	public List<Address> address;
-	public Map<String,String> contacts;
-	/*public GreetingsImpl(String name,int id,List<Address> addr)
-	{
-		this.name = name;
-		this.address = addr;
-		this.id = id;
-	}*/
+	public double salary;
+	public DBUtil db;
 	public void setId(int id) 
 	{
 		this.id = id;
@@ -24,25 +22,35 @@ public class GreetingsImpl implements Greetings {
 	{
 		this.name = name;
 	}
-	public void setAddress(List<Address> address) 
+	public void setDb(DBUtil db)
 	{
-		this.address = address;
+		this.db = db;
 	}
-	public void setContacts(Map<String, String> contacts)
+	public void setSalary(double salary)
 	{
-		this.contacts = contacts;
+		this.salary = salary;
 	}
 	@Override
 	public void greetingMessage()
 	{
 		System.out.println("id = "+this.id);
 		System.out.println("Name = "+this.name);
-		System.out.println("Address : "+this.address);
-		System.out.println("Contacts");
-		for(String key:contacts.keySet())
+		System.out.println("Salary = "+this.salary);
+	}
+	public boolean storeData() throws Exception
+	{
+		Connection con = db.getConnection();
+		String que = "insert into greetings values(?,?,?)";
+		PreparedStatement pt = con.prepareStatement(que);
+		pt.setInt(1,this.id);
+		pt.setString(2, this.name);
+		pt.setDouble(3, this.salary);
+		int no = pt.executeUpdate();
+		if(no == 1)
 		{
-			System.out.println(key+" "+contacts.get(key));
+			return true;
 		}
+		return false;
 	}
 
 }

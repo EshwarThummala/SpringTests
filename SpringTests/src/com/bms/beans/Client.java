@@ -1,16 +1,11 @@
 package com.bms.beans;
-
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Scanner;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-
 public class Client 
 {
 	public static void load() throws IOException
@@ -45,5 +40,9 @@ public class Client
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 		GreetingsImpl g = ctx.getBean("obj",GreetingsImpl.class);
 		g.greetingMessage();
+		if(g.storeData())
+		{
+			System.out.println("Data successfully uploaded");
+		}
 	}
 }
