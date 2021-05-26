@@ -18,7 +18,7 @@
 	<props>
 		<prop key="url">jdbc:MySQL://localhost:3306/SpringTests</prop>
 		<prop key="username">devuser</prop>
-		<prop key="password">Telsmahk@123</prop>
+		<prop key="password"></prop>
 	</props>
 </property>
 </bean>
